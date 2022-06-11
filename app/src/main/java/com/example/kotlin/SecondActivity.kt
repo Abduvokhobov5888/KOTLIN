@@ -23,6 +23,7 @@ class SecondActivity : AppCompatActivity() {
         b_exit.setOnClickListener{
             var member = Member(id = 11, xabar = "Raxmat!")
             openMainActivity(member)
+            finish()
         }
     }
     fun openMainActivity(member: Member){
