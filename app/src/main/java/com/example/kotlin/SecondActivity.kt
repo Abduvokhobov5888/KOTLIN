@@ -16,29 +16,24 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         initViews()
-        backFinish()
     }
-    fun backFinish(){
-        var b_exit = findViewById<Button>(R.id.b_exit)
-        b_exit.setOnClickListener{
-            var member = Member(id = 11, xabar = "Raxmat!")
-            openMainActivity(member)
-            finish()
-        }
-    }
-    fun openMainActivity(member: Member){
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("member",member)
-
-        startActivity(intent)
-    }
-
     fun initViews(){
-        val id_second = findViewById<TextView>(R.id.id_second)
+        val b_exit = findViewById<Button>(R.id.b_exit)
+        b_exit.setOnClickListener{
+            var member = Member(id = 1, xabar = "Raxmat!")
+            backfinish(member)
+        }
+        val text_id = findViewById<TextView>(R.id.text_id)
 
         var user = intent.getSerializableExtra("user")
         Log.d(TAG, user.toString())
 
-        id_second.text = user.toString()
+        text_id.text = user.toString()
+    }
+    fun backfinish(member: Member){
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("member",member)
+        setResult(RESULT_OK,intent)
+        finish()
     }
 }
