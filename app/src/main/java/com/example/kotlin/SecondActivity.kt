@@ -16,10 +16,9 @@ class SecondActivity : AppCompatActivity() {
         initViews()
     }
     fun initViews(){
-        val text_id = findViewById<TextView>(R.id.text_id)
-        var user = intent.getParcelableExtra<User>("user")
-        Log.d(TAG, user.toString())
-
-        text_id.text = user.toString()
+        var text_1 = findViewById<TextView>(R.id.text_1)
+        var name = intent.getStringExtra("member")
+        Log.d(TAG,name!!)
+        text_1.text = name
     }
 }

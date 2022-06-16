@@ -2,31 +2,23 @@ package com.example.kotlin
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlin.modle.Member
 import com.example.kotlin.modle.User
 
 class MainActivity : AppCompatActivity() {
-    val TAG = MainActivity::class.java.toString()
-    lateinit var tv_home:TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initViews()
+
+        val user_edit = findViewById<TextView>(R.id.user_edit)
+        val pw_edit = findViewById<TextView>(R.id.pw_edit)
+
     }
-    fun initViews(){
-     //   var button_open = findViewById<Button>(R.id.button_open)
-      //  button_open.setOnClickListener
-        {
-            var user = User(age = 25, name = "Abbosbek")
-            openSecondActivity(user)
-        }
-    }
-    fun openSecondActivity(user:User){
-        val intent = Intent(this, SecondActivity::class.java)
-        intent.putExtra("user",user)
-       // startActivity(intent)
-    }
+
 }
