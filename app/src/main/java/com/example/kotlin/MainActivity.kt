@@ -16,8 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val user_edit = findViewById<TextView>(R.id.user_edit)
-        val pw_edit = findViewById<TextView>(R.id.pw_edit)
+
 
     }
 
