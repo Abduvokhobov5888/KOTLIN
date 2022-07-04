@@ -6,46 +6,39 @@ import android.widget.AdapterView
 import android.widget.GridView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin.modle.Items
+import com.example.mykotlin.DataModel
+import com.example.mykotlin.PhotoAdapter
 
-class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
+class MainActivity : AppCompatActivity() {
 
-    private var gridView: GridView ? = null
-    private var arrayList: ArrayList<Items> ? = null
-    private var gridAdapter:GridAdapter ? = null
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var photoAdapter: PhotoAdapter
+    private var dataList = mutableListOf<DataModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        gridView = findViewById(R.id.grid_view)
-        arrayList = ArrayList()
-        arrayList = setDataList()
-        gridAdapter = GridAdapter(applicationContext, arrayList!!)
-        gridView?.adapter = gridAdapter
-        gridView?.onItemClickListener = this
-    }
-    private fun setDataList(): ArrayList<Items>{
-        var arrayList: ArrayList<Items> = ArrayList()
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = GridLayoutManager(applicationContext,2)
+        recyclerView.isNestedScrollingEnabled = false
+        photoAdapter = PhotoAdapter(applicationContext)
+        recyclerView.adapter = photoAdapter
 
-        arrayList.add(Items(R.drawable.one, "One"))
-        arrayList.add(Items(R.drawable.two, "Two"))
-        arrayList.add(Items(R.drawable.three, "Three"))
-        arrayList.add(Items(R.drawable.four, "Four"))
-        arrayList.add(Items(R.drawable.five, "Five"))
-        arrayList.add(Items(R.drawable.six, "Six"))
-        arrayList.add(Items(R.drawable.seven, "Seven"))
-        arrayList.add(Items(R.drawable.eight, "Eight"))
-        arrayList.add(Items(R.drawable.nine, "Nine"))
-        arrayList.add(Items(R.drawable.ten, "Ten"))
-
-        return arrayList
-    }
-
-    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
-        var items:Items = arrayList!!.get(position)
-        Toast.makeText(applicationContext, items.name, Toast.LENGTH_LONG).show()
+        dataList.add(DataModel("One","Raqam",R.drawable.one))
+        dataList.add(DataModel("Two","Raqam",R.drawable.two))
+        dataList.add(DataModel("Three","Raqam",R.drawable.three))
+        dataList.add(DataModel("Four","Raqam",R.drawable.four))
+        dataList.add(DataModel("Five","Raqam",R.drawable.five))
+        dataList.add(DataModel("Six","Raqam",R.drawable.six))
+        dataList.add(DataModel("Seven","Raqam",R.drawable.seven))
+        dataList.add(DataModel("Eigth","Raqam",R.drawable.eight))
+        dataList.add(DataModel("Nine","Raqam",R.drawable.nine))
+        dataList.add(DataModel("Ten","Raqam",R.drawable.ten))
+        photoAdapter.setDataList(dataList)
     }
 
 }
